@@ -67,9 +67,10 @@ class UrTube:
 
     def get_videos(self, word):
         for i in UrTube.videos:
-            i.lower()
-            if word in i:
+            if word.lower() in i.lower():
                 print(i)
+
+
     def watch_video(self, title):
         if title in Video.title:
             if UrTube.current_user == None:
