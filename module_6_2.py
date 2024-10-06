@@ -1,6 +1,7 @@
 class Vehicle:
     __COLOR_VARIANTS = ['blue', 'red', 'green', 'black', 'white']
-    def __init__(self, owner, __model,  __color,  __engine_power):
+
+    def __init__(self, owner, __model, __color, __engine_power):
         self.owner = owner
         self.__model = __model
         self.__engine_power = __engine_power
@@ -15,7 +16,6 @@ class Vehicle:
     def get_color(self):
         print(f"Цвет: {self.__color}")
 
-
     def print_info(self):
         self.get_model()
         self.get_horsepower()
@@ -27,7 +27,6 @@ class Vehicle:
             self.__color = new_color
         else:
             print(f'Нельзя сменить цвет на {new_color}')
-
 
 
 class Sedan(Vehicle):
