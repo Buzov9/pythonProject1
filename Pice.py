@@ -1,4 +1,11 @@
-my_dict = {}
-my_dict['video'] = 'title'
-if 'video' in my_dict:
-    print(my_dict)
+class Родительский:
+    head = True
+    def __init__(self):
+        self.about()
+
+
+class Дочерний(Родительский):
+    def about(self):
+        print("я студент")
+
+
