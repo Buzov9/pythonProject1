@@ -1,11 +1,6 @@
-class Родительский:
-    head = True
-    def __init__(self):
-        self.about()
+from pprint import pprint
 
-
-class Дочерний(Родительский):
-    def about(self):
-        print("я студент")
-
-
+name = 'repka2.txt'
+file = open(name, 'a')
+file.read()
+file.close()

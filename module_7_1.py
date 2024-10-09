@@ -7,8 +7,10 @@ class Product:
     def __str__(self):
         return f'{self.name}, {self.weight}, {self.category}'
 
+
 class Shop:
     __file_name = 'products.txt'
+
     def __init__(self):
         {}
 
@@ -17,9 +19,8 @@ class Shop:
         text = file.read()
         file.close()
         return text
-    def add(self, *producrs):
 
-        text = ''
+    def add(self, *producrs):
         for i in producrs:
             file = open(self.__file_name, 'r')
             if str(i) in file.read():
@@ -27,7 +28,7 @@ class Shop:
             else:
                 file = open(self.__file_name, 'a')
                 file.write(f'{str(i)} \n')
-
+        file.close()
 
 
 s1 = Shop()
