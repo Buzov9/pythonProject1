@@ -33,8 +33,6 @@ def calculate_average(*numbers):
                                 count += 1
                         except TypeError:
                             print(f'в numbers записан некорректный тип данных {i}')
-
-
     try:
         if count == 1:
             print("В numbers записан некорректный тип данных")
@@ -42,8 +40,6 @@ def calculate_average(*numbers):
             return personal_sum(tuple(num_sum))[0]/count
     except ZeroDivisionError:
         print("В numbers записан некорректный тип данных")
-
-
 
 
 print(f'Результат 1: {calculate_average("1, 2, 3")}') # Строка перебирается, но каждый символ - строковый тип
