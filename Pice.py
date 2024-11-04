@@ -13,6 +13,5 @@ import os
 #     print(i)
 # print(chr('A'))
 
-a = [6, 5, 34, 2, 1, 9]
-print(sorted(a))
-print(type(a))
+a = ['6, 5, 34, 2, 1, 9']
+print(str(a))
