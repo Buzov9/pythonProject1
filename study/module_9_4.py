@@ -24,7 +24,6 @@ class MysticBall:
     def __init__(self, *words):
         self.words = words
 
-
     def __call__(self, *words):
         return random.choice(self.words)
 

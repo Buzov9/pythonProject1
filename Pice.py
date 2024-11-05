@@ -13,5 +13,31 @@ import os
 #     print(i)
 # print(chr('A'))
 
-a = ['6, 5, 34, 2, 1, 9']
-print(str(a))
+class StepValueError(ValueError):
+    pass
+
+
+class Iterator:
+    def __init__(self, start, stop, step=1):
+        self.start = start
+        self.stop = stop
+        self.step = step
+        if step <= 0:
+            raise StepValueError('Шаг не может быть равен или меньше 0')
+        self.pointer = self.start
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.pointer > self.stop:
+            raise StopIteration
+        current = self.pointer
+        self.pointer += self.step
+        return current
+
+
+# Пример использования
+iter3 = Iterator(6, 15, 2)
+for i in iter3:
+    print(i, end=' ')
