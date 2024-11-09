@@ -3,9 +3,10 @@ def is_prime(func):
         sum_ = func(*num)
         div = (sum_ % x == 0 for x in range(2, sum_))
         if any(div):
-            return f"Составное \n{sum_}"
+            print("Составное")
         else:
-            return f"Простое \n{sum_}"
+            print("Простое")
+        return sum_
     return wrapper
 
 
