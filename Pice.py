@@ -12,7 +12,6 @@ import os
 # for i in os.walk('.'):
 #     print(i)
 # print(chr('A'))
-sum_ = 11
-pop = (sum_ % x == 0 for x in range(2, sum_))
-if any(pop):
-    print(12)
+sum_ = 11 % 7
+print(sum_)
+
