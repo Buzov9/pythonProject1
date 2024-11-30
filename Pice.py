@@ -1,4 +1,6 @@
 import os
+from queue import Queue
+
 # print(os.getcwd())#текущая директория
 #
 # if os.path.exists('new_file'): #True, если такая директория существуе
@@ -33,9 +35,6 @@ import os
 #         self.timer(self.name, self.counter, self.delay)
 #         print(f"поток {self.name} завершен")
 
-from tqdm import tqdm
-import time
-
-for i in tqdm(range(10), desc="проходит день"):
-    time.sleep(0.1)
-
+q = queue = Queue()
+q.put(12)
+print(q.get())
