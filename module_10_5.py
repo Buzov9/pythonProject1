@@ -23,4 +23,4 @@ if __name__ == '__main__':
     start_ = time.time()
     map(read_info, filenames)
     end_time_ = time.time()
-    print('выполнено за: ', end_time_ - start_, 'линейный')
+    print('выполнено за ', end_time_ - start_, 'линейный')
