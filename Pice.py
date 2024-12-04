@@ -1,5 +1,8 @@
-import os
-from queue import Queue
+from threading import Thread, Event
+from time import sleep
+import multiprocessing
+
+
 
 # print(os.getcwd())#текущая директория
 #
@@ -35,6 +38,31 @@ from queue import Queue
 #         self.timer(self.name, self.counter, self.delay)
 #         print(f"поток {self.name} завершен")
 
-q = queue = Queue()
-q.put(12)
-print(q.get())
+counter = 0
+
+
+def first(n):
+    global counter
+    for i in range(n):
+        counter += 1
+        sleep(0.5)
+        print(' 1w!', counter)
+
+    print('exelent 1w!', counter)
+
+
+def second(n):
+    global counter
+    for i in range(n):
+        counter += 1
+        sleep(0.5)
+        print(' 2w!', counter)
+
+    print('exelent! 2w', counter)
+
+
+if __name__ == '__main__':
+    pr1 = multiprocessing.Process(target=first, args=(10, ))
+    pr2 = multiprocessing.Process(target=second, args=(10,))
+    pr1.start()
+    pr2.start()
