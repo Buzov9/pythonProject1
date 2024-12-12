@@ -7,7 +7,10 @@ bot = telebot.TeleBot('мой токен')
 
 @bot.message_handler(commands=['start'])
 def main(message):
-    bot.send_message(message.chat.id, 'Привет!\n Я бот, который покажет погоду в любой точке мира ☀️🌧️❄️\nПросто напиши нужную локацию/город на английском языке и я отправлю тебе данные.\nНапример: /city London', parse_mode='html')
+    bot.send_message(message.chat.id,
+                     'Привет!\n Я бот, который покажет погоду в любой точке мира ☀️🌧️❄️\nПросто напиши нужную локацию/город на английском языке и я отправлю тебе данные.\nНапример: /city London',
+                     parse_mode='html')
+
 
 @bot.message_handler(commands=['city'])
 def city(message):
@@ -23,10 +26,9 @@ def city(message):
             temperature = data['main']['temp']
             bot.send_message(message.chat.id, f"Температура: {temperature} °C")
         else:
-            bot.send_message(message.chat.id,"Ошибка при получении данных")
+            bot.send_message(message.chat.id, "Ошибка при получении данных")
     except:
         bot.send_message(message.chat.id, "введи как в примере!!!\n /citi Moscow")
 
 
 bot.polling(none_stop=True)
-
