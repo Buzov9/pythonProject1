@@ -1,6 +1,3 @@
-import inspect
-
-
 def introspection_info(obj):
     info = {
         'attributes': dir(obj),
@@ -11,8 +8,9 @@ def introspection_info(obj):
 
     return info
 
+
 def sum_(x, y):
-    return x+y
+    return x + y
 
 
 number_info = introspection_info(sum_)
