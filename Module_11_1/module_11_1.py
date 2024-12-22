@@ -1,6 +1,5 @@
 import requests
 import telebot
-from telegram.ext import CommandHandler
 
 bot = telebot.TeleBot('мой токен')
 

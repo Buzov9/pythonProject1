@@ -1,68 +1,46 @@
-from threading import Thread, Event
-from time import sleep
-import multiprocessing
+import random
+import time
+from threading import Thread
+import queue
 
 
+class Bulka(Thread):
+    def __init__(self, queue):
+        self.queue = queue
+        super().__init__()
 
-# print(os.getcwd())#текущая директория
-#
-# if os.path.exists('new_file'): #True, если такая директория существуе
-#     os.chdir('new_file')#изменяет
-# else:
-#     os.mkdir('new_file')#создает
-#     os.chdir('new_file')
-# print(os.getcwd())
-# # os.makedirs(r'new_file\in_file')#создание директории с определенным уровнем вложенности
-# print(os.listdir())
-# for i in os.walk('.'):
-#     print(i)
-# print(chr('A'))
+    def run(self):
+        while True:
+            time.sleep(random.randint(1,5))
+            if random.randint(1, 100) > 90:
+                self.queue.put('подгорелая булка')
+            else:
+                self.queue.put('нормальнаЯ булка')
 
+class Kotleta(Thread):
 
-# class MyThread(threading.Thread):
-#     def __init__(self, name, counter, delay):
-#         threading.Thread.__init__(self)
-#         self.name = name
-#         self.counter = counter
-#         self.delay = delay
-#
-#     def timer(self, name, counter, delay):
-#         while counter:
-#             time.sleep(delay)
-#             print(f'{name} {time.ctime(time.time())}')
-#             counter -= 1
-#
-#
-#     def run(self):
-#         print(f"поток {self.name} запущен")
-#         self.timer(self.name, self.counter, self.delay)
-#         print(f"поток {self.name} завершен")
-
-counter = 0
+    def __init__(self, queue, count):
+        self.queue = queue
+        self.count = count
+        super().__init__()
 
 
-def first(n):
-    global counter
-    for i in range(n):
-        counter += 1
-        sleep(0.5)
-        print(' 1w!', counter)
-
-    print('exelent 1w!', counter)
-
-
-def second(n):
-    global counter
-    for i in range(n):
-        counter += 1
-        sleep(0.5)
-        print(' 2w!', counter)
-
-    print('exelent! 2w', counter)
+    def run(self):
+        while self.count:
+            bulka = self.queue.get()
+            if bulka == 'нормальнаЯ булка':
+                time.sleep(random.randint(1, 5))
+                self.count -= 1
+            print('булок к приготовлению осталось', self.count)
 
 
-if __name__ == '__main__':
-    pr1 = multiprocessing.Process(target=first, args=(10, ))
-    pr2 = multiprocessing.Process(target=second, args=(10,))
-    pr1.start()
-    pr2.start()
+queue = queue.Queue()
+
+t1 = Bulka(queue)
+t2 = Kotleta(queue, 20)
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
