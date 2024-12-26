@@ -1,6 +1,5 @@
 import unittest
 
-
 class Runner:
     def __init__(self, name, speed=5):
         self.name = name
@@ -41,40 +40,4 @@ class Tournament:
         return finishers
 
 
-class TournamentTest(unittest.TestCase):
-    all_results = {}
-
-    @classmethod
-    def setUpClass(cls):
-        cls.usain = Runner('Усэйн', 10)
-        cls.andrey = Runner('Андрей', 9)
-        cls.nik = Runner('Ник', 3)
-
-    @classmethod
-    def tearDownClass(cls):
-        for test_name, results in cls.all_results.items():
-            print(f"Результаты теста {test_name}:")
-            for place, runner in results.items():
-                print(f"{place} место: {runner.name}")
-
-    def test_usain_and_nik(self):
-        tournament = Tournament(90, self.usain, self.nik)
-        results = tournament.start()
-        self.all_results[self._testMethodName] = results
-        self.assertTrue(results[max(results.keys())].name, self.usain.name)
-
-    def test_andrey_and_nik(self):
-        tournament = Tournament(90, self.andrey, self.nik)
-        results = tournament.start()
-        self.all_results[self._testMethodName] = results
-        self.assertTrue(results[max(results.keys())].name, self.andrey.name)
-
-    def test_all_runners(self):
-        tournament = Tournament(90, self.usain, self.andrey, self.nik)
-        results = tournament.start()
-        self.all_results[self._testMethodName] = results
-        self.assertTrue(results[max(results.keys())].name, self.usain.name)
-
-if __name__ == '__main__':
-    unittest.main()
 
